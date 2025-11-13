@@ -1,0 +1,740 @@
+This file is a list of script command names extracted from the DllField.cro overlay file.
+It is only for documentation purposes and not used by the (dis)assembly script.
+The IDs shown here are (probably) NOT the actual internal command IDs.
+
+  0 0x0   joint10
+  1 0x1   joint20
+  2 0x2   joint15
+  3 0x3   joint5
+  4 0x4   Head
+  5 0x5   loc_head
+  6 0x6   LHand
+  7 0x7   RHand
+  8 0x8   LToe
+  9 0x9   RToe
+ 10 0xa   loc_eye
+ 11 0xb   loc_mouth
+ 12 0xc   Origin
+ 13 0xd   LFoot
+ 14 0xe   RFoot
+ 15 0xf   Waist
+ 16 0x10  MdlGetParam0
+ 17 0x11  MdlSetParam0
+ 18 0x12  mb_01
+ 19 0x13  MdlGetParam1
+ 20 0x14  MdlSetParam1
+ 21 0x15  room01_pokecen_dummy1
+ 22 0x16  mb_02
+ 23 0x17  MdlGetParam2
+ 24 0x18  MdlSetParam2
+ 25 0x19  room01_pokecen_dummy2
+ 26 0x1a  mb_03
+ 27 0x1b  room01_pokecen_dummy3
+ 28 0x1c  mb_04
+ 29 0x1d  room01_pokecen_dummy4
+ 30 0x1e  mb_05
+ 31 0x1f  room01_pokecen_dummy5
+ 32 0x20  mb_06
+ 33 0x21  room01_pokecen_dummy6
+ 34 0x22  SetMirrorNPC
+ 35 0x23  CallPC
+ 36 0x24  IEGetOBJID
+ 37 0x25  AIGetOBJID
+ 38 0x26  WazaOshieGetWazaID
+ 39 0x27  PokePartyGetWazaID
+ 40 0x28  GetLanguageID
+ 41 0x29  PlayerGetZoneID
+ 42 0x2a  TrainerGetMsgID
+ 43 0x2b  MdlGetRailPosLineHashID
+ 44 0x2c  GetBTLTrainerObjID
+ 45 0x2d  MdlGetObjID
+ 46 0x2e  BuildMdlGetHandleByUniqID
+ 47 0x2f  GetBTLTrainerScrID
+ 48 0x30  GetTrainerID
+ 49 0x31  ItemGetNutsID
+ 50 0x32  PocketGetID
+ 51 0x33  IDPresentGetID
+ 52 0x34  WarpSetID
+ 53 0x35  GetFinishWaitID
+ 54 0x36  _CallBackGetScriptID
+ 55 0x37  MdlEventTypeIsAI
+ 56 0x38  BGMTrainerEyeBGM
+ 57 0x39  MEReturnBGM
+ 58 0x3a  PlayerGetBP
+ 59 0x3b  PlayerSetBP
+ 60 0x3c  CommandNOP
+ 61 0x3d  DuelingGetRankP
+ 62 0x3e  DuelingSetRankP
+ 63 0x3f  GetDirAddValueGridX
+ 64 0x40  GetPlayerFollowerGridX
+ 65 0x41  MdlGetGPosDirX
+ 66 0x42  MdlGetGPosX
+ 67 0x43  PlayerGetFrontGridPosX
+ 68 0x44  GetMoneyWinPosX
+ 69 0x45  MdlGetPosX
+ 70 0x46  PlayerGetFrontGridPosY
+ 71 0x47  GetMoneyWinPosY
+ 72 0x48  MdlGetPosY
+ 73 0x49  GetDirAddValueGridZ
+ 74 0x4a  GetPlayerFollowerGridZ
+ 75 0x4b  MdlGetGPosDirZ
+ 76 0x4c  MdlGetGPosZ
+ 77 0x4d  PlayerGetFrontGridPosZ
+ 78 0x4e  MdlGetPosZ
+ 79 0x4f  Assert_
+ 80 0x50  ZukanHyouka
+ 81 0x51  Call3DCamera
+ 82 0x52  GetFieldTradeData
+ 83 0x53  GetSavedMakeData
+ 84 0x54  RestoreMakeData
+ 85 0x55  BackupMakeData
+ 86 0x56  ClearMyStatusMakeData
+ 87 0x57  InitializePromotionData
+ 88 0x58  AICommonWeakReserveSetData
+ 89 0x59  PokePartyHaveWaza
+ 90 0x5a  PokePartySetWaza
+ 91 0x5b  ItemSub
+ 92 0x5c  BattleInst_GetBattleStartMsgId
+ 93 0x5d  AICommonWeakReserveGetScrId
+ 94 0x5e  AILoad
+ 95 0x5f  PlayerNickNameLoad
+ 96 0x60  MsgLoad
+ 97 0x61  BallsLoad
+ 98 0x62  PokeIconsLoad
+ 99 0x63  PlayerNickNameUnload
+100 0x64  RecordAdd
+101 0x65  MdlAdd
+102 0x66  ItemAdd
+103 0x67  ListMenuAdd
+104 0x68  PokePartyAdd
+105 0x69  AIIsLoaded
+106 0x6a  MsgIsLoaded
+107 0x6b  BallsIsLoaded
+108 0x6c  PokeIconsIsLoaded
+109 0x6d  MEIsFinished
+110 0x6e  IsKisekaeChecked
+111 0x6f  BattleHouse_IsBattleBoxUsed
+112 0x70  AddTrainerObjOnGrid
+113 0x71  AddCommMultiTrainerObjOnGrid
+114 0x72  TrainerCardGetRankGold
+115 0x73  GetStickHold
+116 0x74  GetPlayerFollowerAcmd
+117 0x75  EVCameraULCDEnd
+118 0x76  IEIsAIEnd
+119 0x77  DemoBGMEnd
+120 0x78  EventBGMEnd
+121 0x79  BattleHouse_End
+122 0x7a  EVCameraEnd
+123 0x7b  IEMdlAcmdIsEnd
+124 0x7c  AIMdlAcmdIsEnd
+125 0x7d  VoiceIsEnd
+126 0x7e  LayoutFadeIsEnd
+127 0x7f  BuildMdlEventAnimeIsEnd
+128 0x80  TalkMdlZoomIsEnd
+129 0x81  MdlAcmdSetEnd
+130 0x82  BuildMdlEventAnimeSetEnd
+131 0x83  _RentPokeEventCommand
+132 0x84  PokePartyCrimaxCommand
+133 0x85  ConnectFriend
+134 0x86  CheckWinAllSuspend
+135 0x87  CheckWinSuspend
+136 0x88  EVCameraBind
+137 0x89  PokePartyCheckWazaRemind
+138 0x8a  _GetDateTimeToSecond
+139 0x8b  _GetRealTimeToSecond
+140 0x8c  GetSecond
+141 0x8d  AddEnvironmentSound
+142 0x8e  StopEnvironmentSound
+143 0x8f  PlayEnvironmentSound
+144 0x90  CallWildBattleNutsYard
+145 0x91  SaveBattleRecord
+146 0x92  ChangeFace
+147 0x93  _GymElecSetBlackFace
+148 0x94  CheckEventMapReplace
+149 0x95  GetKisekaeCheckedPrice
+150 0x96  GetPrice
+151 0x97  SetPrice
+152 0x98  PlayerSetFormToNormalForce
+153 0x99  IsCanFieldTrade
+154 0x9a  SetMirrorParamSide
+155 0x9b  MdlGetRailPosSide
+156 0x9c  GetRomFriendDataCode
+157 0x9d  MdlChangeMoveCode
+158 0x9e  MdlGetMoveCode
+159 0x9f  GetTrainerObjCode
+160 0xa0  MdlGetObjCode
+161 0xa1  MdlSearchByObjCode
+162 0xa2  PlayerIsKanjiMode
+163 0xa3  PlayerSetKanjiMode
+164 0xa4  MdlInterestViewSetMode
+165 0xa5  FieldMenuAddPage
+166 0xa6  FieldMenuPushPage
+167 0xa7  FieldMenuPopPage
+168 0xa8  PlayerCheckKisekaeImage
+169 0xa9  IESendMessage
+170 0xaa  _SendKinomiSurveyMessage
+171 0xab  NowMapBGMChange
+172 0xac  EventBGMChange
+173 0xad  BGMVolumeChange
+174 0xae  BGParamPosChange
+175 0xaf  MdlParamPosChange
+176 0xb0  DoorParamPosChange
+177 0xb1  PosParamPosChange
+178 0xb2  KawaigariNotifyChange
+179 0xb3  MapChangeFake
+180 0xb4  BoxAddPoke
+181 0xb5  CallFieldCaptureDemoSimplePoke
+182 0xb6  SaveMakeDataForPromotionMale
+183 0xb7  SaveMakeDataForPromotionFemale
+184 0xb8  IsMapFadeEnable
+185 0xb9  MdlInterestViewIsEnable
+186 0xba  BuildMdlSetVisible
+187 0xbb  BallSetVisible
+188 0xbc  TrainerBattleRuleIsDouble
+189 0xbd  MakeNetHandle
+190 0xbe  CallSakasaBattle
+191 0xbf  CallWildBattle
+192 0xc0  StartBattle
+193 0xc1  PokePartyCheckSkyBattle
+194 0xc2  IsAlreadyOpenNewHairStyle
+195 0xc3  WordSetItemWazaName
+196 0xc4  WordSetWazaName
+197 0xc5  BattleHouse_SetFriendName
+198 0xc6  WordSetPlaceName
+199 0xc7  _SodateyaWordsetPokeName
+200 0xc8  WordSetPokeTypeName
+201 0xc9  WordSetTrainerTypeName
+202 0xca  WordSetNutsTypeName
+203 0xcb  WordSetTokuseiName
+204 0xcc  WordSetPlayerNickName
+205 0xcd  WordSetPCMonsNickName
+206 0xce  WordSetTemotiMonsNickName
+207 0xcf  WordSetRivalName
+208 0xd0  WordSetItemName
+209 0xd1  WordSetWeatherName
+210 0xd2  WordSetTrainerName
+211 0xd3  WordSetAPowerName
+212 0xd4  WordSetItemPocketName
+213 0xd5  PokePartySetDefaultName
+214 0xd6  WordSetSeikakuName
+215 0xd7  WordSetBoxTrayName
+216 0xd8  ShakeCameraBeginEndFrame
+217 0xd9  SetCameraAnimationEndFrame
+218 0xda  EVCameraIsEndFrame
+219 0xdb  BallSetAnimeFrame
+220 0xdc  SetCameraAnimationBeginFrame
+221 0xdd  BallSetAnime
+222 0xde  MdlSetPauseAutoWaitAnime
+223 0xdf  _Camera3DStopPetitAnime
+224 0xe0  _Camera3DStartPetitAnime
+225 0xe1  GetSalonScene
+226 0xe2  SetSalonScene
+227 0xe3  ItemIsWazaMachine
+228 0xe4  GetTimeZone
+229 0xe5  ItemIsMegaStone
+230 0xe6  MezameruPowerGetType
+231 0xe7  GetConnectExitType
+232 0xe8  MdlGetEventType
+233 0xe9  MdlCntAcquire
+234 0xea  _MapChangeCore
+235 0xeb  _CallTrainerBattleCore
+236 0xec  _MdlAcmdMakeMoveCore
+237 0xed  _MapChangeRailCore
+238 0xee  PopupMsgParamSetCore
+239 0xef  ChangeFashionBefore
+240 0xf0  RestoreFashionBefore
+241 0xf1  HidePlayerCapBefore
+242 0xf2  SetHairAndShowPlayerCapBefore
+243 0xf3  RecreatePlayerBefore
+244 0xf4  CheckFieldSkillUse
+245 0xf5  MsgRelease
+246 0xf6  MdlCntRelease
+247 0xf7  _CallWildLose
+248 0xf8  CallTrainerLose
+249 0xf9  MsgWinAllClose
+250 0xfa  MsgWinClose
+251 0xfb  SaveCourse
+252 0xfc  GetCourse
+253 0xfd  BuildMdlEventAnimePause
+254 0xfe  UpdateKisekaeDate
+255 0xff  SetSalonVisitDate
+256 0x100 MdlAcmdUpdate
+257 0x101 MdlSpMotionMoveUpdate
+258 0x102 DuelingUpdate
+259 0x103 MdlSpMotionUpdate
+260 0x104 IECreate
+261 0x105 AICreate
+262 0x106 BattleInstWorkCreate
+263 0x107 BallsCreate
+264 0x108 IETerminate
+265 0x109 GymElecSetStandCloseState
+266 0x10a IEReceiveState
+267 0x10b GetFashionReturnState
+268 0x10c _GetKinomiSurveyState
+269 0x10d IEDelete
+270 0x10e AIDelete
+271 0x10f PokeIconsPreDelete
+272 0x110 _SodateyaEggDelete
+273 0x111 BattleInstWorkDelete
+274 0x112 BallsDelete
+275 0x113 PokeIconsDelete
+276 0x114 _ZukanIsComplete
+277 0x115 GetMinute
+278 0x116 IEMdlAcmdSetByRoute
+279 0x117 AIMdlAcmdSetByRoute
+280 0x118 UseSprayContinue
+281 0x119 _SodateyaPokeLeave
+282 0x11a AIIsAlive
+283 0x11b PlaySpMotionMove
+284 0x11c OffBTLTrainerMove
+285 0x11d MdlGetDirMove
+286 0x11e TalkMdlClearEyeToEye
+287 0x11f TalkMdlSetEyeToEye
+288 0x120 TalkMdlClearEye
+289 0x121 TalkMdlSetEye
+290 0x122 CallPlayerC02PokeRideOff
+291 0x123 CallPlayerSitDownOff
+292 0x124 CallBag
+293 0x125 PlaceNameSetNotCloseFlag
+294 0x126 MdlSetTalkOffFlag
+295 0x127 ZukanGetOpenFlag
+296 0x128 ZukanSetOpenFlag
+297 0x129 AIGetForceStopFlag
+298 0x12a AISetForceStopFlag
+299 0x12b BadgeGetFlag
+300 0x12c ZukanGetFlag
+301 0x12d BadgeSetFlag
+302 0x12e ZukanSetFlag
+303 0x12f BadgeResetFlag
+304 0x130 MdlDelByFlag
+305 0x131 PokeTemotiIsEgg
+306 0x132 ApplyKisekaeShopping
+307 0x133 CallKisekaeFitting
+308 0x134 SEIsPlaying
+309 0x135 BGMIsPlaying
+310 0x136 CallFieldCaptureDemoMsg
+311 0x137 CheckWLANSwitch
+312 0x138 CallWildBattleRockCrash
+313 0x139 MdlSetVisibleMesh
+314 0x13a SetFinish
+315 0x13b GetMonth
+316 0x13c GetBirthdayMonth
+317 0x13d PokerusCheckTemoti
+318 0x13e PlayerTurnToObj
+319 0x13f DelTrainerObj
+320 0x140 AddBtlTrainerObj
+321 0x141 _SodateyaPokeTakeBack
+322 0x142 ItemAddCheck
+323 0x143 CallKisekaeCheck
+324 0x144 WazaOshieCheck
+325 0x145 _SodateyaLoveCheck
+326 0x146 GymFightingCallGimmick
+327 0x147 _IsReportLock
+328 0x148 WordSetFashionTalk
+329 0x149 IsZoneWalk
+330 0x14a TrainerCardGetRank
+331 0x14b DuelingGetRank
+332 0x14c DuelingSetRank
+333 0x14d PlayerCheckPairlook
+334 0x14e VanishKeyWaitMark
+335 0x14f SetKeyWaitMark
+336 0x150 ReleaseWinWork
+337 0x151 AICommonWeakReserveGetWkVal
+338 0x152 _TravelingPokeIsSetTerminal
+339 0x153 MdlAcmdSetToOtherMdl
+340 0x154 MdlDel
+341 0x155 BattleHouse_WaitSetupDressUpModel
+342 0x156 GetStylishLevel
+343 0x157 PromoGetOpenLevel
+344 0x158 PromoSetOpenLevel
+345 0x159 CallAppHologramMail
+346 0x15a MdlParamPosChangeRail
+347 0x15b MdlIsRail
+348 0x15c ShakeCameraEndAll
+349 0x15d PokePartyRecoverAll
+350 0x15e PokeTemotiGetBall
+351 0x15f _PGLPostmanFuncCall
+352 0x160 GlobalCall
+353 0x161 _MapChangeAndDemoCall
+354 0x162 FriendSafariSelectCall
+355 0x163 CallFriendlyShopSell
+356 0x164 BoxIsFull
+357 0x165 EVCameraSetGameCameraParam
+358 0x166 EVCameraSetSrcParam
+359 0x167 PokePartyAddParam
+360 0x168 GlobalGetChildParam
+361 0x169 GlobalSetChildParam
+362 0x16a _GetNutsYardParam
+363 0x16b _SetNutsYardParam
+364 0x16c EVCameraSetSlideParam
+365 0x16d _GetWildTreeParam
+366 0x16e PokePartyGetPoodleParam
+367 0x16f EVCameraSetFrameParam
+368 0x170 EVCameraSetSpecialParam
+369 0x171 _GetKinomiMutationParam
+370 0x172 SetMirrorParam
+371 0x173 _GetNutsParam
+372 0x174 BoxPokeGetParam
+373 0x175 IDPresentGetParam
+374 0x176 PokePartyGetParam
+375 0x177 PokePartySetParam
+376 0x178 EVCameraSetInitParam
+377 0x179 GlobalGetParentParam
+378 0x17a GlobalSetParentParam
+379 0x17b EVCameraSetDstParam
+380 0x17c TrialHouse_GetDLItem
+381 0x17d ClearCheckedItem
+382 0x17e WordSetFashionItem
+383 0x17f BattleHouse_GetBgm
+384 0x180 BattleHouse_SetBgm
+385 0x181 MdlPauseAnim
+386 0x182 BattleHouse_IsComm
+387 0x183 GymElecStandAnm
+388 0x184 _GymGrassIsEndGardAnm
+389 0x185 _GymGrassPlayGardAnm
+390 0x186 _GymElecBlackAnm
+391 0x187 _GymElecAnswerAnm
+392 0x188 _GymElecIsEndDoorAnm
+393 0x189 _GymElecBtmIsEndDoorAnm
+394 0x18a _GymElecPlayDoorAnm
+395 0x18b _GymElecBtmPlayDoorAnm
+396 0x18c _GymElecIsEndMissAnm
+397 0x18d _GymElecPlayMissAnm
+398 0x18e PlayerGetForm
+399 0x18f GetKisekaeCheckedNum
+400 0x190 ItemGetNum
+401 0x191 LayoutFadeRequestIn
+402 0x192 CallPlayerC02PokeRideOn
+403 0x193 CallPlayerSitDownOn
+404 0x194 IsZonePokecen
+405 0x195 IsWin
+406 0x196 GetPokeTracerRecordChain
+407 0x197 GetPokeTracerNewRecordChain
+408 0x198 EVCameraULCDBegin
+409 0x199 EVCameraBegin
+410 0x19a ShakeCameraBegin
+411 0x19b IsBagMannequin
+412 0x19c IsHumanMannequin
+413 0x19d BattleHouse_SetRibbon
+414 0x19e VanishTimerIcon
+415 0x19f SetTimerIcon
+416 0x1a0 GetHWRegion
+417 0x1a1 IsFinishChangingFashion
+418 0x1a2 SaveCurrentFashion
+419 0x1a3 ApplyFashion
+420 0x1a4 GetRomVersion
+421 0x1a5 CallCommendation
+422 0x1a6 SetCameraAnimationTranslation
+423 0x1a7 PrepareCameraAnimation
+424 0x1a8 IsPlayingCameraAnimation
+425 0x1a9 PlayCameraAnimation
+426 0x1aa IsReadyCameraAnimation
+427 0x1ab DestroyCameraAnimation
+428 0x1ac SetCameraAnimationRotation
+429 0x1ad TalkMdlSetTalkMotion
+430 0x1ae IsEndLoadSpMotion
+431 0x1af ReqLoadSpMotion
+432 0x1b0 DeleteSpMotion
+433 0x1b1 SetupSpMotion
+434 0x1b2 PlaySpMotion
+435 0x1b3 CallPromotion
+436 0x1b4 IsSavedMakeDataForPromotion
+437 0x1b5 SaveDefaultPromotion
+438 0x1b6 PlayDefaultPromotion
+439 0x1b7 AIGetOption
+440 0x1b8 PokePartyCheckDistribution
+441 0x1b9 APowerLearn
+442 0x1ba NeedRestoreFashionAfterReturn
+443 0x1bb CallEventBigFourReturn
+444 0x1bc _GymElecLiftDown
+445 0x1bd _GymElecTopLiftDown
+446 0x1be GetRockCrashItemTableNo
+447 0x1bf MsgWinCloseNo
+448 0x1c0 AICommonWeakReserveGetWkNo
+449 0x1c1 MdlPauseAnimNo
+450 0x1c2 PokePartyChangeFormNo
+451 0x1c3 PokePartyChangePoodleFormNo
+452 0x1c4 PokePartyChangeRotomFormNo
+453 0x1c5 WaitCommYesNo
+454 0x1c6 GetPokeTracerRecordMonsNo
+455 0x1c7 GetPokeTracerNewRecordMonsNo
+456 0x1c8 _TravelingPokeGetMonsNo
+457 0x1c9 PokeAddTableGetMonsNo
+458 0x1ca GetPokeTracerTargetMonsNo
+459 0x1cb GetTrainerInfo
+460 0x1cc GymGetVictoryInfo
+461 0x1cd GymSetVictoryInfo
+462 0x1ce CallFieldTradeDemo
+463 0x1cf CallFieldCaptureDemo
+464 0x1d0 CallCaptureDemo
+465 0x1d1 CallFieldNotCaptureDemo
+466 0x1d2 CallHidenDemo
+467 0x1d3 CallApplicationDemo
+468 0x1d4 CallSorawotobuDemo
+469 0x1d5 MdlIsMoveSpeedZero
+470 0x1d6 MdlSetMoveSpeedZero
+471 0x1d7 _Camera3DIsExistSavePhoto
+472 0x1d8 _SodateyaWordsetPokeLevelUp
+473 0x1d9 PokePartyLevelUp
+474 0x1da _GymElecLiftUp
+475 0x1db _GymElecTopLiftUp
+476 0x1dc GetPlayerCap
+477 0x1dd _Camera3DIsEndLoadMap
+478 0x1de MsgSwap
+479 0x1df DuelingDump
+480 0x1e0 CallKisekaeFittingShop
+481 0x1e1 IsOpenPromoTelop
+482 0x1e2 WardsetPromoTelop
+483 0x1e3 ShakeCameraBeginLoop
+484 0x1e4 SEStop
+485 0x1e5 BuildMdlAllTimeAnimeStop
+486 0x1e6 BuildMdlEventAnimeStop
+487 0x1e7 _CallTrialDownloadApp
+488 0x1e8 IsKisekaePurchasedInApp
+489 0x1e9 BattleHouse_CallPartySelectApp
+490 0x1ea TrialHouse_CallBtlResultApp
+491 0x1eb MdlGetDirDisp
+492 0x1ec MdlSetDirDisp
+493 0x1ed IsSelectedFriendDressup
+494 0x1ee GetCharTypeDressup
+495 0x1ef PokeMemoryMessageSetup
+496 0x1f0 GimmickAnimeReq
+497 0x1f1 MdlSetWaitAnimeReq
+498 0x1f2 ParentFlagSetReq
+499 0x1f3 WorkSetReq
+500 0x1f4 ParentSeqSetReq
+501 0x1f5 TalkMdlMsg_Seq
+502 0x1f6 YesNoWin_Seq
+503 0x1f7 ListMenuInit_Seq
+504 0x1f8 ListMenuStart_Seq
+505 0x1f9 MdlSetPosToOBJNear
+506 0x1fa CallGameClear
+507 0x1fb AcmdListClear
+508 0x1fc MdlInterestViewClear
+509 0x1fd WordSetNumber
+510 0x1fe PokeMemoryMessageIsExistOther
+511 0x1ff BattleHouse_SendVsTrainer
+512 0x200 BattleHouse_DecideCommVsTrainer
+513 0x201 TrialHouse_SetTrainer
+514 0x202 BattleHouse_SetCommVsTariner
+515 0x203 SetupAiPartner
+516 0x204 SelectPartner
+517 0x205 PokePartyIsOwner
+518 0x206 _PostmanGetParameter
+519 0x207 RestoreFashionAfter
+520 0x208 AddBraceletFashionAfter
+521 0x209 ChangeToDefaultFashionAfter
+522 0x20a HidePlayerCapAfter
+523 0x20b SetHairAndShowPlayerCapAfter
+524 0x20c RecreatePlayerAfter
+525 0x20d _WordSetRegister
+526 0x20e IsContinueRecover
+527 0x20f _CallPhotoViewer
+528 0x210 GymElecViewPlayer
+529 0x211 PlayerGetReturnDir
+530 0x212 CalcVecToDir
+531 0x213 GetBTLTrainerDir
+532 0x214 TalkMdlSetDir
+533 0x215 GetTurnDirByDir
+534 0x216 GetCurrentBackHair
+535 0x217 GetCurrentFrontHair
+536 0x218 GetDefaultEyeColor
+537 0x219 SetDefaultEyeColor
+538 0x21a GetCurrentEyeColor
+539 0x21b SetCurrentEyeColor
+540 0x21c GetCurrentHairColor
+541 0x21d SetMirror
+542 0x21e ResetMirror
+543 0x21f StartChampionPassageElevator
+544 0x220 StartBigFourPassageElevator
+545 0x221 BallFactoryReverseConveyor
+546 0x222 GetHour
+547 0x223 _MdlProperties
+548 0x224 PokeIconsTrans
+549 0x225 FieldTradeCheckSelectMons
+550 0x226 MdlSetGPos
+551 0x227 BuildMdlGetHandleByGPos
+552 0x228 MdlSetRailPos
+553 0x229 SetMoneyWinPos
+554 0x22a MdlSetPos
+555 0x22b _Camera3DGetStartPos
+556 0x22c WarpNextPos
+557 0x22d _CallWazaApps
+558 0x22e IsBoss
+559 0x22f BoxMonsNoExists
+560 0x230 MdlIsExists
+561 0x231 SetSavedMakeDataToMyStatus
+562 0x232 DuelingReadTrainerDataAt
+563 0x233 DuelingLoadTrainerInfoAt
+564 0x234 DuelingSaveTrainerInfoAt
+565 0x235 CallHallOfFameMachineEffect
+566 0x236 CallFlashEffect
+567 0x237 CallIwakudakiEffect
+568 0x238 CallKabekudakiEffect
+569 0x239 CallIaigiriEffect
+570 0x23a CallTakinoboriEffect
+571 0x23b CallNaminoriEffect
+572 0x23c CallMoveFameRoomEffect
+573 0x23d CallAnanukenohimoEffect
+574 0x23e CallTeleportEffect
+575 0x23f CallAnawohoruEffect
+576 0x240 CallPoke3Select
+577 0x241 CallPokeSelect
+578 0x242 CallFieldTradeBoxSelect
+579 0x243 CallBoxSelect
+580 0x244 CallMapConnect
+581 0x245 IsWearingProduct
+582 0x246 WordSetWearingProduct
+583 0x247 RecordGet
+584 0x248 TrainerBattleRuleGet
+585 0x249 TrainerSPTypeGet
+586 0x24a EyeTrainerMoveTypeGet
+587 0x24b TrainerTalkTypeGet
+588 0x24c AIStateGet
+589 0x24d MegaEvolvedFlagGet
+590 0x24e ParentFlagGet
+591 0x24f WorkGet
+592 0x250 TrainerItemGet
+593 0x251 _SodateyaPokeNumGet
+594 0x252 ParentSeqGet
+595 0x253 WildBattleResultGet
+596 0x254 SkyBattleResultGet
+597 0x255 IEMdlAcmdSet
+598 0x256 AIMdlAcmdSet
+599 0x257 _MdlAcmdSet
+600 0x258 RecordSet
+601 0x259 AIStateSet
+602 0x25a FlagSet
+603 0x25b _TalkTargetObjWorkSet
+604 0x25c KisekaeItemSet
+605 0x25d TalkMdlZoomSet
+606 0x25e WindEventSet
+607 0x25f MdlInterestViewSet
+608 0x260 PokeDiarySet
+609 0x261 PokeMemorySet
+610 0x262 CallKisekaeReset
+611 0x263 BuildMdlEventAnimeReset
+612 0x264 FlagReset
+613 0x265 WindEventReset
+614 0x266 MdlIsHalfSitSkelPreset
+615 0x267 MdlOverlapShift
+616 0x268 IsSelectedFriendMy64Bit
+617 0x269 GimmickWorkGetBit
+618 0x26a GimmickWorkSetBit
+619 0x26b GimmickWorkResetBit
+620 0x26c MotionSEWait
+621 0x26d MdlAcmdEndWait
+622 0x26e _GimmickAnimeWait
+623 0x26f BattleHouse_CommWait
+624 0x270 _MdlSetSitWait
+625 0x271 _ReportWait
+626 0x272 _ABKeyWait
+627 0x273 LastKeyWait
+628 0x274 MdlAcmdInit
+629 0x275 _TalkMdlEndInit
+630 0x276 HideItemInit
+631 0x277 _TalkMdlStartInit
+632 0x278 IsFirstSalonVisit
+633 0x279 _TravelingPokeSetPokeBattleResult
+634 0x27a BreederJudgeGetResult
+635 0x27b _BattleGetResult
+636 0x27c GetPokeTracerTargetCnt
+637 0x27d BattleHouse_IsParent
+638 0x27e _PostmanReceivePresent
+639 0x27f GymI01WeedEvent
+640 0x280 CallFireEntranceEvent
+641 0x281 CallBigFourSteelEntranceEvent
+642 0x282 CallBigFourDragonEntranceEvent
+643 0x283 CallBigFourWaterEntranceEvent
+644 0x284 GymGrassSlideEvent
+645 0x285 CallBadgeCheckGateEvent
+646 0x286 GymGrassHangMoveEvent
+647 0x287 GymIceCylinderMoveEvent
+648 0x288 BallFactoryStartMoveEvent
+649 0x289 GymGrassRopeUpDownEvent
+650 0x28a CallEggDemoEvent
+651 0x28b GymI01JoroEvent
+652 0x28c CallDeepSwampEvent
+653 0x28d GymEsperWarpEvent
+654 0x28e GymEsperEnterEvent
+655 0x28f GymInsectEnterEvent
+656 0x290 CallTsuchikemuriEncountEvent
+657 0x291 PopupMsgStartEvent
+658 0x292 GymIceLastEvent
+659 0x293 GymI01HarvestEvent
+660 0x294 GetPokeTracerChargePoint
+661 0x295 AddStylishPoint
+662 0x296 GetStylishPoint
+663 0x297 GetCoolPoint
+664 0x298 TrialHouse_AddBtlResultPoint
+665 0x299 TrialHouse_GetBtlResultFixPoint
+666 0x29a GetKeyCont
+667 0x29b MdlGetRailPosFront
+668 0x29c PokePartyGetWazaCount
+669 0x29d BoxGetPokeCount
+670 0x29e WordSetWordWithCount
+671 0x29f PocketGetTotalCount
+672 0x2a0 AddWinCount
+673 0x2a1 ClearWinCount
+674 0x2a2 GetWinCount
+675 0x2a3 _GetMaxWinCount
+676 0x2a4 GetMyWinCount
+677 0x2a5 BadgeGetCount
+678 0x2a6 _ZukanGetCount
+679 0x2a7 PokePartyGetCount
+680 0x2a8 CallHideItemEncount
+681 0x2a9 CallDustBoxEncount
+682 0x2aa _Camera3DCanShot
+683 0x2ab IEReqChangeScript
+684 0x2ac WeakReserveScript
+685 0x2ad _SodateyaEggAdopt
+686 0x2ae BattleEventBGMStart
+687 0x2af BuildMdlEventAnimeStart
+688 0x2b0 _ReportStart
+689 0x2b1 BuildMdlEventAnimeInvStart
+690 0x2b2 BuildMdlAllTimeAnimeRestart
+691 0x2b3 BuildMdlEventAnimeRestart
+692 0x2b4 _Camera3DIsOverrideAlert
+693 0x2b5 _CheckBootHandsomeQuest
+694 0x2b6 MdlAcmdEndRequest
+695 0x2b7 _CallBackRegist
+696 0x2b8 SodateyaIsEggExist
+697 0x2b9 IsTalkMdlExist
+698 0x2ba LayoutFadeRequestOut
+699 0x2bb CallPokePartyNameInput
+700 0x2bc PlayerNickNameCallInput
+701 0x2bd PlayerGetFieldMenu
+702 0x2be PlayerSetFieldMenu
+703 0x2bf _SodateyaWordsetPokeTakeBackMenu
+704 0x2c0 MdlAcmdMakeMoveEx
+705 0x2c1 PromoOpenCoolMax
+706 0x2c2 PromoIsOpenCoolMax
+707 0x2c3 PlayerGetSex
+708 0x2c4 SetPublishingIndex
+709 0x2c5 PlayerNickNameSelectFix
+710 0x2c6 PlayerNickNameInputFix
+711 0x2c7 WordSetPlayerNickNamePrefix
+712 0x2c8 PokePartyToBox
+713 0x2c9 GetItemIdOfDustBox
+714 0x2ca CheckTypeOfDustBox
+715 0x2cb GetTimeZoneBySkyBox
+716 0x2cc _GetDateTimeToDay
+717 0x2cd _GetRealTimeToDay
+718 0x2ce GetDay
+719 0x2cf GetBirthdayDay
+720 0x2d0 MEPlay
+721 0x2d1 MotionSEPlay
+722 0x2d2 VoicePlay
+723 0x2d3 CallKisekaeDisplay
+724 0x2d4 PlaceNameDisplay
+725 0x2d5 CallSalonDisplay
+726 0x2d6 MdlGetRailPosKey
+727 0x2d7 PlayerSubMoney
+728 0x2d8 PlayerAddMoney
+729 0x2d9 PlayerGetMoney
+730 0x2da WordSetMoney
+731 0x2db PlayerSetMoney
+732 0x2dc WordSetFashionBuy
+733 0x2dd CallBPShopBuy
+734 0x2de CallMPShopBuy
+735 0x2df CallFriendlyShopBuy

@@ -1,0 +1,19 @@
+This file contains the reverse-engineered command IDs. There's no guarantee for correctness.
+You can contribute to this by adding more entries in the same format like you can see below.
+Command names with a quote (") are custom names due to uncertainty about which actual command that ID belongs to.
+Otherwise, the command name is taken from the extracted command names list.
+
+643096180 WordSetItemName
+2820754823 WordSetItemWazaName
+3052799994 WordSetItemPocketName
+2992559586 WordSetPlayerNickName
+2598311446 "MessageDisplay
+3370646369 "KeyWait
+4179854433 PocketGetID
+4035456102 "ActionExec
+2104193861 "ActionWait
+424608040 "ActionSetMDl
+2387998249 "WorkSet
+3936484505 ItemIsWazaMachine
+2769510366 ItemAddCheck
+2372083710 ItemAdd
