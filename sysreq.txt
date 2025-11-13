@@ -1,5 +1,5 @@
 This file contains the reverse-engineered command IDs. There's no guarantee for correctness.
-You can contribute to this by adding more entries in the same format like you can see below.
+You can contribute to this by adding more entries in the same format like you can see below (and opening a PR on GitHub).
 Command names with a quote (") are custom names due to uncertainty about which actual command that ID belongs to.
 Otherwise, the command name is taken from the extracted command names list.
 
