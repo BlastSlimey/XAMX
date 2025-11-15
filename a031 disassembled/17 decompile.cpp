@@ -1,4 +1,4 @@
-// This is a manual attempt at decompiling the overworld item balls into more readable c++ code
+// This is a manual attempt at decompiling the overworld item balls script (XY) into more readable c++ code
 // It contains some comments that explain certain things
 // It's recommended to read the disasembly example file first
 
@@ -223,6 +223,7 @@ int func52_bagfull(int p12_itemid, int p16_count, int p20_unk) {
     sysreq(15, 0, p12_itemid, p16_count);
     // func27 is one of two functions that call func1, and thereby the message display command
     // I assumed 170 to be the text file number, but this script's text is actually in text file 142, so good question what the 170 does
+    // Here's a tool for decompressing the text files of Pokémon X and Y: https://github.com/kwsch/xytext
     func27(7, 170, p20_unk, 0);
     sysreq(22);
     func39(0);

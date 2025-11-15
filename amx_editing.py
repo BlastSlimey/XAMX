@@ -1,10 +1,14 @@
+# This python script contains only explanations for how to use it (located at the bottom)
+# Other than that, there's no documentation about AMX scripting in this file
+
+
 import array
 import re
 import os
 import zipfile
 from itertools import chain
 from os import PathLike
-from typing import NamedTuple, Self, Any
+from typing import NamedTuple, Self, Any, Literal
 import pathlib
 from enum import Enum
 
@@ -15,13 +19,13 @@ def get_file_as_bytes(f: PathLike | str) -> bytes:
     return base_rom_bytes
 
 
-def get_text_file(f) -> str:
+def get_text_file(f: PathLike | str) -> str:
     with open(f, "rt") as infile:
         text = infile.read()
     return text
 
 
-def get_text_file_lines(f) -> list[str]:
+def get_text_file_lines(f: PathLike | str) -> list[str]:
     with open(f, "rt") as infile:
         text = infile.readlines()
     return text
@@ -89,10 +93,16 @@ class AMX:
             parts = line.split()
             if len(parts) and parts[0][:2] == "OP":
                 self.amx_commands[int(parts[1])] = (parts[0], *parts[3:])
-        for line in get_text_file_lines("sysreq.txt"):
+        for line in get_text_file_lines("commands.txt"):
             parts = line.split()
-            if len(parts) and parts[0].isnumeric():
-                self.script_commands[int(parts[0])] = parts[1]
+            if len(parts) == 1:
+                _hash = 0
+                for letter in parts[0]:
+                    _hash = ((131 * _hash) % 0x100000000) ^ letter.encode()[0]
+                if _hash not in self.script_commands:
+                    self.script_commands[_hash] = parts[0]
+                else:
+                    raise Exception(f"Duplicate hash: {parts[0]} {self.script_commands[_hash]}")
         if isinstance(data, list):
             self.assemble(data)
         elif script_num is None:
@@ -557,7 +567,12 @@ class AMX:
 if __name__ == "__main__":
 
     # This is just an example on how to use this python script
-    with open(f"a031 disassembled/17.xamx", "wt") as f:
-        data = bytearray(get_file_as_bytes(f"garcs/a031_/17.bin"))
-        disassambled_text = AMX(data).disassemble()
-        f.write(disassambled_text)
+    disassemble = True
+    if disassemble:
+        with open(f"a031 analysis/17.xamx", "wt") as f:
+            data = bytearray(get_file_as_bytes(f"garcs/a031_/17.bin"))
+            # The AMX() constructor has an optional "script_num" argument that is needed for files
+            #   that contain more data than just one AMX script, i.e. it contains extra data
+            #   at the beginning/end, there are more than one AMX scripts in it, or both
+            disassambled_text = AMX(data).disassemble()
+            f.write(disassambled_text)

@@ -1,5 +1,6 @@
-// This is a disassembly of the file a/0/3/1/17.bin (overworld item balls)
-// There are some explanation comments scattered acroos this file, so please read them carefully
+// This is a disassembly of the file a/0/3/1/17.bin in XY (overworld item balls)
+// The corresponding script in ORAS is almost identical
+// There are some explanation comments scattered across this file, so please read them carefully
 // You can easily find all of them by searching for the double slash (//)
 // Explaining every opcode here would be too much, so please see the pawn implementor's guides for opcode-specific questions:
 //   https://codeberg.org/compuphase/pawn/src/branch/main/doc/Pawn_Implementer_Guide.pdf
@@ -14,7 +15,7 @@ Main function: funcmain
 // This is how the public functions table would look like:
 //
 // Public functions:
-//     0x1f8 123456789
+//     0x1f8 #123456789
 //     0x950 SomeFunctionName
 //
 // The hexadecimal value is the address of where the public function begins
@@ -101,11 +102,7 @@ Code:
     // The OP_SYSREQ_N opcode calls the script command in its second param
     //   and defines in its third param how many bytes (with 4 being one variable) have to be discarded from the stacks afterwards
     //   (which kind of indicates how many params it actually has)
-    // As you might have noticed, every opcode has at least one parameter
-    // While every param after the first one is stored in its own 4 bytes,
-    //   the first param is actually a part of the 4-bytes opcode (and thereby always present, even if unused)
-    // For most opcodes, it's always 0, except for opcodes with a "_P_" in their name, which means "packed"
-    // Packed opcodes, which are identical to their _P_-less counterparts and not documented >:(, have their single(!) param in that packed param
+    // The native function number param is automatically replaced with the name in the native functions table
     OP_PUSH_P_C       0
     OP_PUSH_P_S       12
     OP_PUSH_P_C       1
@@ -186,6 +183,11 @@ Code:
     OP_JUMP           0 lbl2
 
    #lbl2 (0x184)
+    // As you might have noticed, every opcode has at least one parameter
+    // While every param after the first one is stored in its own 4 bytes,
+    //   the first param is actually a part of the 4-bytes opcode (and thereby always present, even if unused)
+    // For most opcodes, it's always 0, except for opcodes with a "_P_" in their name, which means "packed"
+    // Packed opcodes, which are identical to their _P_-less counterparts and not documented >:(, have their single(!) param in that packed param
     OP_PUSH_P_S       12
     OP_SYSREQ_N       0 7 4
     OP_JZER           0 lbl3
