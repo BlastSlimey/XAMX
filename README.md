@@ -1,9 +1,9 @@
 # XAMX
-Pokémon XY/ORAS/SM/USUM script disassembly and documentation
+Pokémon XY/ORAS/SM/USUM script dis- and re-assembler and documentation
 
 This is a tool for dis- and re-assembling the AMX scripts in 
 Pokémon X, Y, Omega Ruby, Alpha Sapphire, Sun, Moon, Ultra Sun, and Ultra Moon.
-<br>Documentation for how the scripts work (and other things) is found in (almost) all files, so please read them carefully.
+<br>Documentation for how the scripts in the games work (and other things) is found in (almost) all files, so please read them carefully.
 
 ## Why "XAMX"?
 
