@@ -1,0 +1,996 @@
+// This is a disassembly of the file a/0/1/2/013.bin in XY
+// It is one of many files that contain scripts and wild encounters of a certain map
+// There are some explanation comments scattered across this file, so please read them carefully
+// You can find all of them by searching for the double slash (//)
+// Generally, using the double slash here works the same as in C/C++/C#/Java/...
+// Explaining every opcode here would be too much, so please see the pawn implementor's guides for opcode-specific questions:
+//   https://codeberg.org/compuphase/pawn/src/branch/main/doc/Pawn_Implementer_Guide.pdf
+//   https://sampforum.blast.hk/showthread.php?tid=591705
+
+
+// The map files of XY and ORAS actually contain the wild encounter tables and TWO AMX files
+// So to prevent having to copy-paste bytes from one file into another, non-AMX sections of a file do also get loaded into the disassembled file
+// You can, technically*, put any file you want into the disassembler and get a valid .xamx file from it
+//   (* except if the disassembler falsely detects an AMX section that isn't one)
+// The start of a raw data section is marked with "--- Data Section", which must not be removed
+// AMX sections are marked with "--- AMX Section", which must also not be removed
+--- Data Section
+
+// Raw data blocks (which also exist in AMX sections) have to be written byte-by-byte
+// You can easily insert and delete lines, and it's not required to exactly have 16 bytes per line
+// 0x0
+5a 4f 04 00   18 00 00 00   50 00 00 00   d0 05 00 00
+e8 0a 00 00   e8 0a 00 00   00 00 3d 00   31 00 2c 00
+10 00 01 00   05 00 01 00   05 00 01 00   06 00 01 00
+3f 01 0c 00   1e 00 1d 04   03 48 02 00   00 00 1c 00
+94 24 04 00   71 01 00 00   00 00 00 00   ef 01 00 00
+44 02 00 00   01 0b 01 00   00 00 00 00   d2 29 00 00
+04 00 00 00   0f 00 0f 00   03 00 01 00   00 00 00 00
+00 00 53 00   00 00 00 00   00 00 02 00   04 00 00 00
+// 0x80
+00 00 00 00   00 00 00 00   01 00 01 00   ff ff ff ff
+ff ff 00 00   00 00 00 00   0c 00 16 00   00 00 00 00
+01 00 2b 00   2f 00 00 00   00 00 03 00   00 00 00 00
+00 00 00 00   00 00 00 00   03 00 01 00   ff ff ff ff
+ff ff 00 00   00 00 00 00   1a 00 15 00   00 00 00 00
+02 00 48 00   00 00 00 00   00 00 b1 08   02 00 00 00
+00 00 00 00   00 00 00 00   01 00 01 00   ff ff ff ff
+ff ff 00 00   00 00 00 00   1b 00 19 00   00 00 00 00
+// 0x100
+03 00 3b 00   00 00 00 00   00 00 34 08   01 00 00 00
+00 00 00 00   00 00 00 00   01 00 01 00   ff ff ff ff
+ff ff 00 00   00 00 00 00   14 00 16 00   00 00 00 00
+04 00 a1 00   00 00 00 00   04 03 96 28   01 00 00 00
+00 00 00 00   00 00 00 00   01 00 01 00   ff ff ff ff
+ff ff 00 00   00 00 00 00   17 00 17 00   00 00 00 00
+05 00 37 00   00 00 00 00   c4 02 d0 07   00 00 00 00
+00 00 00 00   00 00 00 00   01 00 01 00   ff ff ff ff
+// 0x180
+ff ff 00 00   00 00 00 00   14 00 0b 00   00 00 00 00
+06 00 65 00   00 00 00 00   c4 02 d0 07   00 00 00 00
+00 00 00 00   00 00 00 00   01 00 01 00   ff ff ff ff
+ff ff 00 00   00 00 00 00   13 00 0b 00   00 00 00 00
+07 00 66 00   00 00 00 00   c4 02 d0 07   00 00 00 00
+00 00 00 00   00 00 00 00   01 00 01 00   ff ff ff ff
+ff ff 00 00   00 00 00 00   14 00 0a 00   00 00 00 00
+08 00 40 00   00 00 00 00   03 03 a0 28   01 00 00 00
+// 0x200
+00 00 00 00   00 00 00 00   01 00 01 00   ff ff ff ff
+ff ff 00 00   00 00 00 00   12 00 17 00   00 00 00 00
+09 00 3c 00   00 00 00 00   00 00 82 27   01 00 00 00
+00 00 00 00   00 00 00 00   01 00 01 00   ff ff ff ff
+ff ff 00 00   00 00 00 00   18 00 0e 00   00 00 00 00
+0a 00 2f 00   00 00 00 00   00 00 01 00   00 00 00 00
+00 00 00 00   00 00 00 00   01 00 01 00   ff ff ff ff
+ff ff 00 00   00 00 00 00   0f 00 1b 00   00 00 00 00
+// 0x280
+0c 00 00 00   00 02 00 00   5f 01 00 00   ef 01 03 00
+01 00 00 00   00 00 00 00
+
+--- AMX Section
+
+// The following values should not be changed unless you know what you do
+// The main function though can be renamed if you want for whatever reason
+Allocated memory: 5700 //0x1644
+Main function: funcmain
+Cell size: 4
+Table record size: 8
+
+// Some files have so-called "public functions" which can be exported to be used in other scripts
+// This is how the public functions table would look like:
+//
+// Public functions:
+//     #func123 SomeFunctionName
+//     #func456   #123456789
+
+// Native functions are (always?) the script commands
+// They are called using OP_SYSREQ_N with its first parameter being the number next to the command name/ID 
+// A native function is only shown here as its numeric "ID" if it hasn't been documented in commands.txt yet
+// They are always sorted by first appearance in the vanilla script
+Native functions:
+    0 IsContinueRecover
+    1 MdlSearchByObjCode
+    2 _PostmanGetParameter
+    3 FlagSet
+    4 MdlIsExists
+    5   #3276460715
+    6 FlagReset
+    7 MdlAdd
+    8 MdlSetDirDisp
+    9 MdlGetGPosX
+    10 MdlGetGPosZ
+    11 MdlSetGPos
+    12 _PGLPostmanFuncCall
+    13 CommandNOP
+
+// Imported libraries, usage unknown, but seems to always be the same for all scripts in a game
+Libraries:
+    0   #3390614062
+
+// Exported variables from the data section, with the hexadecimal value being the address
+// The variable with the smallest address is usually where the called script id is written to from the game
+Public variables:
+    0x0   #3611786391
+
+// Exported tags, with the hexadecimal value being the flag ID(?), usage unknown
+Public tags:
+    0x40000002   #3390614062
+
+// Some scripts also contain overlay data and a symbol names table here, 
+//   but they will be displayed as raw bytes due to their structure being unknown/unclear
+
+
+
+// Beginning of the code section
+Code:
+    // The code section always begins with this exact opcode (for technical reasons)
+    // However, this is not the entry point; instead it's the main function defined at the top of the file
+    OP_HALT_P         0
+
+  // Labels are generated dynamically, so you don't have to calculate offsets every time manually
+  // In the disassembly process, function labels are generated with the prefix "func" and other jumps with "lbl"
+  // You can rename any label to your desire
+  #func37 //0x4
+    // OP_PROC is a kind of "setup" opcode that's found at the start of every function
+    OP_PROC           0
+    OP_PUSH_P_C       0
+    OP_CALL           0 func1
+    OP_PUSH_P_C       0
+    OP_CALL           0 func2
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func38 //0x28
+    OP_PROC           0
+    OP_SYSREQ_N       0 IsContinueRecover 0
+    OP_EQ_P_C_PRI     1
+    OP_JZER           0 lbl3
+    OP_PUSH_P_C       0
+    OP_CALL           0 func1
+    OP_PUSH_P_C       0
+    OP_CALL           0 func2
+
+   #lbl3 //0x5c
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func1 //0x64
+    OP_PROC           0
+    // Calling a script command (i.e. a native function) is done by storing the parameters on the stack in descending order
+    // The OP_SYSREQ_N opcode calls the script command in its second param
+    //   and defines in its third param how many bytes (with 4 being one variable) have to be discarded from the stacks afterwards
+    //   (which kind of indicates how many params it actually has)
+    // The native function number param is automatically replaced with the name in the native functions table (if the command name is known)
+    OP_STACK_P        -4
+    OP_PUSH_P_C       64
+    OP_SYSREQ_N       0 MdlSearchByObjCode 4
+    OP_STOR_P_S_PRI   -4
+    OP_LOAD_P_S_PRI   -4
+    OP_EQ_P_C_PRI     -1
+    OP_JZER           0 lbl4
+    OP_ZERO_PRI       0
+    OP_STACK_P        4
+    OP_RETN           0
+
+   #lbl4 //0x9c
+    OP_PUSH_P_C       0
+    OP_SYSREQ_N       0 _PostmanGetParameter 4
+    OP_JNZ            0 lbl5
+    OP_PUSH_P_C       771
+    OP_SYSREQ_N       0 FlagSet 4
+    OP_PUSH_P_S       -4
+    OP_SYSREQ_N       0 MdlIsExists 4
+    OP_EQ_P_C_PRI     1
+    OP_JZER           0 lbl6
+    OP_PUSH_P_C       0
+    OP_PUSH_P_S       -4
+    OP_SYSREQ_N       0 5 8
+
+   #lbl6 //0xf4
+    OP_JUMP           0 lbl7
+
+   #lbl5 //0xfc
+    OP_PUSH_P_C       771
+    OP_SYSREQ_N       0 FlagReset 4
+    OP_PUSH_P_S       -4
+    OP_SYSREQ_N       0 MdlIsExists 4
+    OP_JNZ            0 lbl8
+    OP_PUSH_P_S       -4
+    OP_SYSREQ_N       0 MdlAdd 4
+
+   #lbl8 //0x134
+    OP_PUSH_P_C       1
+    OP_PUSH_P_S       -4
+    OP_SYSREQ_N       0 5 8
+    OP_PUSH_P_C       1
+    OP_PUSH_P_S       -4
+    OP_SYSREQ_N       0 MdlSetDirDisp 8
+    OP_PUSH_P_S       -4
+    OP_PUSH_P_C       4
+    OP_CALL           0 func9
+
+   #lbl7 //0x16c
+    OP_STACK_P        4
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func9 //0x178
+    OP_PROC           0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       255
+    OP_SYSREQ_N       0 MdlGetGPosX 4
+    OP_STOR_P_S_PRI   -4
+    OP_PUSH_P_C       255
+    OP_SYSREQ_N       0 MdlGetGPosZ 4
+    OP_STOR_P_S_PRI   -8
+    OP_PUSH_P_S       12
+    OP_SYSREQ_N       0 MdlGetGPosX 4
+    OP_STOR_P_S_PRI   -12
+    OP_PUSH_P_S       12
+    OP_SYSREQ_N       0 MdlGetGPosZ 4
+    OP_STOR_P_S_PRI   -16
+    OP_LOAD_S_BOTH    0 -12 -4
+    OP_JNEQ           0 lbl10
+    OP_LOAD_S_BOTH    0 -16 -8
+    OP_JNEQ           0 lbl10
+    OP_CONST_P_PRI    1
+    OP_JUMP           0 lbl11
+
+   #lbl10 //0x210
+    OP_ZERO_PRI       0
+
+   #lbl11 //0x214
+    OP_JZER           0 lbl12
+    OP_LOAD_P_S_PRI   -12
+    OP_EQ_P_C_PRI     17
+    OP_JZER           0 lbl13
+    OP_LOAD_P_S_PRI   -12
+    OP_ADD_P_C        -1
+    OP_STOR_P_S_PRI   -12
+    OP_JUMP           0 lbl14
+
+   #lbl13 //0x240
+    OP_CONST_S        0 -12 17
+
+   #lbl14 //0x24c
+    OP_PUSH_P_S       12
+    OP_PUSH_P_S       -16
+    OP_PUSH_P_C       0
+    OP_PUSH_P_S       -12
+    OP_SYSREQ_N       0 MdlSetGPos 16
+
+   #lbl12 //0x268
+    OP_STACK_P        16
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func2 //0x274
+    OP_PROC           0
+    OP_STACK_P        -4
+    OP_PUSH_P_C       161
+    OP_SYSREQ_N       0 MdlSearchByObjCode 4
+    OP_STOR_P_S_PRI   -4
+    OP_LOAD_P_S_PRI   -4
+    OP_EQ_P_C_PRI     -1
+    OP_JZER           0 lbl15
+    OP_ZERO_PRI       0
+    OP_STACK_P        4
+    OP_RETN           0
+
+   #lbl15 //0x2ac
+    // As you might have noticed, every opcode has at least one parameter
+    // While every param after the first one is stored in its own 4 bytes,
+    //   the first param is actually a part of the 4-bytes opcode (and thereby always present, even if unused)
+    // For most opcodes, it's always 0, except for opcodes with a "_P_" in their name, which means "packed"
+    // Packed opcodes, which are identical to their _P_-less counterparts and not documented >:(, have their single(!) param in that packed param
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       0
+    OP_SYSREQ_N       0 _PGLPostmanFuncCall 8
+    OP_JNZ            0 lbl16
+    OP_PUSH_P_C       772
+    OP_SYSREQ_N       0 FlagSet 4
+    OP_PUSH_P_S       -4
+    OP_SYSREQ_N       0 MdlIsExists 4
+    OP_EQ_P_C_PRI     1
+    OP_JZER           0 lbl17
+    OP_PUSH_P_C       0
+    OP_PUSH_P_S       -4
+    OP_SYSREQ_N       0 5 8
+
+   #lbl17 //0x308
+    OP_JUMP           0 lbl18
+
+   #lbl16 //0x310
+    OP_PUSH_P_C       772
+    OP_SYSREQ_N       0 FlagReset 4
+    OP_PUSH_P_S       -4
+    OP_SYSREQ_N       0 MdlIsExists 4
+    OP_JNZ            0 lbl19
+    OP_PUSH_P_S       -4
+    OP_SYSREQ_N       0 MdlAdd 4
+
+   #lbl19 //0x348
+    OP_PUSH_P_C       1
+    OP_PUSH_P_S       -4
+    OP_SYSREQ_N       0 5 8
+    OP_PUSH_P_C       1
+    OP_PUSH_P_S       -4
+    OP_SYSREQ_N       0 MdlSetDirDisp 8
+    OP_PUSH_P_S       -4
+    OP_PUSH_P_C       4
+    OP_CALL           0 func20
+
+   #lbl18 //0x380
+    OP_STACK_P        4
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func20 //0x38c
+    OP_PROC           0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       255
+    OP_SYSREQ_N       0 MdlGetGPosX 4
+    OP_STOR_P_S_PRI   -4
+    OP_PUSH_P_C       255
+    OP_SYSREQ_N       0 MdlGetGPosZ 4
+    OP_STOR_P_S_PRI   -8
+    OP_PUSH_P_S       12
+    OP_SYSREQ_N       0 MdlGetGPosX 4
+    OP_STOR_P_S_PRI   -12
+    OP_PUSH_P_S       12
+    OP_SYSREQ_N       0 MdlGetGPosZ 4
+    OP_STOR_P_S_PRI   -16
+    OP_LOAD_S_BOTH    0 -12 -4
+    OP_JNEQ           0 lbl21
+    OP_LOAD_S_BOTH    0 -16 -8
+    OP_JNEQ           0 lbl21
+    OP_CONST_P_PRI    1
+    OP_JUMP           0 lbl22
+
+   #lbl21 //0x424
+    OP_ZERO_PRI       0
+
+   #lbl22 //0x428
+    OP_JZER           0 lbl23
+    OP_LOAD_P_S_PRI   -16
+    OP_EQ_P_C_PRI     23
+    OP_JZER           0 lbl24
+    OP_LOAD_P_S_PRI   -16
+    OP_ADD_P_C        -1
+    OP_STOR_P_S_PRI   -16
+    OP_JUMP           0 lbl25
+
+   #lbl24 //0x454
+    OP_CONST_S        0 -16 23
+
+   #lbl25 //0x460
+    OP_PUSH_P_S       12
+    OP_PUSH_P_S       -16
+    OP_PUSH_P_C       0
+    OP_PUSH_P_S       -12
+    OP_SYSREQ_N       0 MdlSetGPos 16
+
+   #lbl23 //0x47c
+    OP_STACK_P        16
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  // The main function usually follows the same structure:
+  // The called script ID is loaded and compared to a few values in a switch-case block
+  // Map scripts always have script IDs starting at 0, while global scripts have them beginning at 2000+
+  #funcmain //0x488
+    OP_PROC           0
+    OP_LOAD_P_PRI     0
+    OP_SWITCH         0 lbl26
+
+   #lbl34 //0x498
+    OP_PUSH_P_C       0
+    OP_CALL           0 func27
+    OP_JUMP           0 lbl28
+
+   #lbl35 //0x4ac
+    OP_PUSH_P_C       0
+    OP_CALL           0 func29
+    OP_JUMP           0 lbl28
+
+   #lbl36 //0x4c0
+    OP_PUSH_P_C       0
+    OP_CALL           0 func30
+    OP_JUMP           0 lbl28
+
+   #lbl33 //0x4d4
+    OP_PUSH_P_C       0
+    OP_CALL           0 func31
+    OP_JUMP           0 lbl28
+
+   #lbl32 //0x4e8
+    OP_SYSREQ_N       0 CommandNOP 0
+    OP_JUMP           0 lbl28
+
+   #lbl26 //0x4fc
+    // The case table has a special structure:
+    // The first param (after the unused packed param) is the number of cases and the second param is the default case (i.e. when no other case matches) jump label
+    // Every case consists of the to-be-compared value and the jump label if that case matches
+    // Usually, the default case always executes a CommandNOP and the -1 case (i.e. no script ID written to the data section) executes an empty function
+    // Every case label leads to a single function call, which leads to the structure of every script ID having its own function
+    // Having experience in Gen 5 scripting will make you see quite some similarities
+    //   (maybe Gen 4 and earlier as well? I don't have any experience in those gens so idk)
+    OP_CASETBL        0 4 lbl32 -1 lbl33 0 lbl34 1 lbl35 2 lbl36
+
+   #lbl28 //0x528
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func31 //0x530
+    OP_PROC           0
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func27 //0x53c
+    OP_PROC           0
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func29 //0x548
+    OP_PROC           0
+    OP_PUSH_P_C       0
+    OP_CALL           0 func37
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func30 //0x560
+    OP_PROC           0
+    OP_PUSH_P_C       0
+    OP_CALL           0 func38
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+
+
+Data:
+    // 0x0
+    ff ff ff ff
+
+
+--- AMX Section
+
+Allocated memory: 6456 //0x1938
+Main function: funcmain
+Cell size: 4
+Table record size: 8
+
+Native functions:
+    0   #185836425
+    1 MsgWinCloseNo
+    2 SEPlay
+    3 _TalkMdlStartInit
+    4 PlayerGetReturnDir
+    5 TalkMdlSetEyeToEye
+    6 MdlIsHalfSitSkelPreset
+    7 TalkMdlSetTalkMotion
+    8 WorkGet
+    9 _TalkMdlEndInit
+    10 TalkMdlClearEyeToEye
+    11 TalkMdlMsg_Seq
+    12 CheckWinAllSuspend
+    13 LastKeyWait
+    14 MdlAcmdInit
+    15 MdlAcmdSet
+    16 MdlAcmdSetEnd
+    17 MdlAcmdUpdate
+    18 MdlSetWaitAnimeReq
+    19 CommandNOP
+
+Libraries:
+    0   #3390614062
+
+Public variables:
+    0x44   #2254066657
+    0x40   #694501447
+    0x3c   #3611786391
+
+Public tags:
+    0x40000002   #3390614062
+
+
+
+Code:
+    OP_HALT_P         0
+
+  #func22 //0x4
+    OP_PROC           0
+    OP_PUSH_P_S       12
+    OP_SYSREQ_N       0 0 4
+    // There are two general-purpose registers: Pri(mary) and Alt(ernative)
+    OP_ZERO_PRI       0
+    OP_ZERO_ALT       0
+    OP_HALT           0 12
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func25 //0x30
+    OP_PROC           0
+    OP_PUSH_P_S       24
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       -1
+    OP_PUSH_P_C       1
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       1
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_S       20
+    OP_PUSH_P_S       16
+    OP_PUSH_P_C       0
+    OP_PUSH_P_S       12
+    OP_PUSH_P_C       76
+    OP_CALL           0 func1
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func26 //0x94
+    OP_PROC           0
+    OP_PUSH_P_S       12
+    OP_SYSREQ_N       0 MsgWinCloseNo 4
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func4 //0xb0
+    OP_PROC           0
+    OP_PUSH_C         0 393216
+    OP_SYSREQ_N       0 SEPlay 4
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func24 //0xd0
+    OP_PROC           0
+    // Before calling a function, like with OP_SYSREQ_N, its params have to be pushed to the stack in descending order
+    // The last param however isn't an actual param that you would use in the function, 
+    //   but, again, the number of bytes that have to be discarded from the stack afterwards
+    //   and thereby also and indicator for how many actual params that function has (minus the indicator itself)
+    OP_PUSH_P_C       16
+    OP_PUSH_P_S       12
+    OP_PUSH_P_C       8
+    OP_CALL           0 func2
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func2 //0xf0
+    OP_PROC           0
+    OP_PUSH_P_S       16
+    OP_PUSH_P_S       12
+    OP_SYSREQ_N       0 _TalkMdlStartInit 8
+    OP_STOR_P_S_PRI   16
+    OP_LOAD_P_S_PRI   16
+    OP_CONST_P_ALT    32
+    OP_AND            0
+    OP_JNZ            0 lbl3
+    OP_PUSH_P_C       0
+    OP_CALL           0 func4
+
+   #lbl3 //0x12c
+    OP_LOAD_P_S_PRI   16
+    OP_CONST_P_ALT    8
+    OP_AND            0
+    OP_JNZ            0 lbl5
+    OP_STACK_P        -4
+    OP_SYSREQ_N       0 PlayerGetReturnDir 0
+    OP_STOR_P_S_PRI   -4
+    OP_CONST_P_PRI    0
+    OP_ADD_P_C        4
+    OP_MOVE_ALT       0
+    OP_LOAD_P_S_PRI   -4
+    OP_STOR_I         0
+    OP_PUSH_P_C       3
+    OP_PUSH_P_C       0
+    OP_PUSH_P_S       12
+    OP_PUSH_P_C       12
+    OP_CALL           0 func6
+    OP_PUSH_P_C       -1
+    OP_PUSH_P_C       4
+    OP_CALL           0 func7
+    OP_STACK_P        4
+
+   #lbl5 //0x194
+    OP_LOAD_P_S_PRI   16
+    OP_CONST_P_ALT    4
+    OP_AND            0
+    OP_JNZ            0 lbl8
+    OP_LOAD_P_S_PRI   12
+    OP_CONST_P_ALT    -1
+    OP_JEQ            0 lbl9
+    OP_PUSH_P_S       12
+    OP_SYSREQ_N       0 TalkMdlSetEyeToEye 4
+    OP_JUMP           0 lbl8
+
+   #lbl9 //0x1d0
+    OP_PUSH_P_C       -1
+    OP_SYSREQ_N       0 TalkMdlSetEyeToEye 4
+
+   #lbl8 //0x1e0
+    OP_LOAD_P_S_PRI   16
+    OP_CONST_P_ALT    2
+    OP_AND            0
+    OP_JNZ            0 lbl10
+    OP_PUSH_P_S       12
+    OP_SYSREQ_N       0 MdlIsHalfSitSkelPreset 4
+    OP_EQ_P_C_PRI     1
+    OP_JZER           0 lbl10
+    OP_PUSH_P_C       6
+    OP_PUSH_P_C       12
+    OP_PUSH_P_C       255
+    OP_PUSH_P_C       12
+    OP_CALL           0 func6
+    OP_PUSH_P_C       -1
+    OP_PUSH_P_C       4
+    OP_CALL           0 func7
+
+   #lbl10 //0x238
+    OP_LOAD_P_S_PRI   16
+    OP_CONST_P_ALT    16
+    OP_AND            0
+    OP_JZER           0 lbl11
+    OP_PUSH_P_S       12
+    OP_SYSREQ_N       0 TalkMdlSetTalkMotion 4
+
+   #lbl11 //0x25c
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func27 //0x264
+    OP_PROC           0
+    OP_STACK_P        -4
+    OP_PUSH_C         0 0x8013
+    OP_SYSREQ_N       0 WorkGet 4
+    OP_STOR_P_S_PRI   -4
+    OP_STACK_P        -4
+    OP_PUSH_C         0 0x8012
+    OP_SYSREQ_N       0 WorkGet 4
+    OP_STOR_P_S_PRI   -8
+    OP_PUSH_P_S       -4
+    OP_PUSH_P_S       -8
+    OP_SYSREQ_N       0 _TalkMdlEndInit 8
+    OP_STOR_P_S_PRI   -4
+    OP_LOAD_P_S_PRI   -4
+    OP_CONST_P_ALT    4
+    OP_AND            0
+    OP_JNZ            0 lbl12
+    OP_PUSH_P_S       -8
+    OP_SYSREQ_N       0 TalkMdlClearEyeToEye 4
+
+   #lbl12 //0x2dc
+    OP_LOAD_P_S_PRI   -4
+    OP_CONST_P_ALT    2
+    OP_AND            0
+    OP_JNZ            0 lbl13
+    OP_PUSH_P_S       -8
+    OP_SYSREQ_N       0 MdlIsHalfSitSkelPreset 4
+    OP_EQ_P_C_PRI     1
+    OP_JZER           0 lbl13
+    OP_PUSH_P_C       6
+    OP_PUSH_P_C       36
+    OP_PUSH_P_C       255
+    OP_PUSH_P_C       12
+    OP_CALL           0 func6
+    OP_PUSH_P_C       -1
+    OP_PUSH_P_C       4
+    OP_CALL           0 func7
+
+   #lbl13 //0x334
+    OP_LOAD_P_S_PRI   -4
+    OP_CONST_P_ALT    16
+    OP_AND            0
+    OP_JZER           0 lbl14
+    OP_PUSH_P_S       -8
+    OP_PUSH_P_C       4
+    OP_CALL           0 func15
+
+   #lbl14 //0x358
+    // The return value of a function is stored in the primary register
+    // Also, all the local variables have to be discarded at the end of the function
+    OP_STACK_P        8
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func1 //0x364
+    OP_PROC           0
+    OP_PUSH_P_S       84
+    OP_PUSH_P_S       80
+    OP_PUSH_P_S       76
+    OP_PUSH_P_S       72
+    OP_PUSH_P_S       68
+    OP_PUSH_P_S       64
+    OP_PUSH_P_S       60
+    OP_PUSH_P_S       56
+    OP_PUSH_P_S       52
+    OP_PUSH_P_S       48
+    OP_PUSH_P_S       44
+    OP_PUSH_P_S       40
+    OP_PUSH_P_S       36
+    OP_PUSH_P_S       32
+    OP_PUSH_P_S       28
+    OP_PUSH_P_S       24
+    OP_PUSH_P_S       20
+    OP_PUSH_P_S       16
+    OP_PUSH_P_S       12
+    OP_SYSREQ_N       0 TalkMdlMsg_Seq 76
+    OP_LOAD_P_S_PRI   84
+    OP_CONST_ALT      0 65536
+    OP_AND            0
+    OP_JNZ            0 lbl16
+    OP_PUSH_P_C       0
+    OP_CALL           0 func17
+
+   #lbl16 //0x3e4
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func17 //0x3ec
+    OP_PROC           0
+    OP_JUMP           0 lbl18
+
+   #lbl18 //0x3f8
+    OP_SYSREQ_N       0 CheckWinAllSuspend 0
+    OP_JZER           0 lbl19
+    OP_JUMP           0 lbl20
+    OP_JUMP           0 lbl21
+
+   #lbl19 //0x41c
+    OP_PUSH_P_C       1
+    OP_PUSH_P_C       4
+    OP_CALL           0 func22
+
+   #lbl21 //0x42c
+    OP_JUMP           0 lbl18
+
+   #lbl20 //0x434
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func49 //0x43c
+    OP_PROC           0
+    OP_LOAD_P_S_PRI   20
+    OP_EQ_P_C_PRI     -1
+    OP_JZER           0 lbl23
+    OP_PUSH_C         0 0x8011
+    OP_SYSREQ_N       0 WorkGet 4
+    OP_STOR_P_S_PRI   20
+
+   #lbl23 //0x468
+    OP_PUSH_P_S       20
+    OP_PUSH_P_C       4
+    OP_CALL           0 func24
+    OP_PUSH_P_C       0
+    OP_PUSH_P_S       16
+    OP_PUSH_P_S       20
+    OP_PUSH_P_S       12
+    OP_PUSH_P_C       16
+    OP_CALL           0 func25
+    OP_SYSREQ_N       0 LastKeyWait 0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       4
+    OP_CALL           0 func26
+    OP_PUSH_P_C       0
+    OP_CALL           0 func27
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func48 //0x4c4
+    OP_PROC           0
+    OP_LOAD_P_S_PRI   20
+    OP_EQ_P_C_PRI     -1
+    OP_JZER           0 lbl28
+    OP_PUSH_C         0 0x8011
+    OP_SYSREQ_N       0 WorkGet 4
+    OP_STOR_P_S_PRI   20
+
+   #lbl28 //0x4f0
+    OP_PUSH_P_C       8
+    OP_PUSH_P_S       20
+    OP_PUSH_P_C       8
+    OP_CALL           0 func2
+    OP_PUSH_P_C       0
+    OP_PUSH_P_S       16
+    OP_PUSH_P_S       20
+    OP_PUSH_P_S       12
+    OP_PUSH_P_C       16
+    OP_CALL           0 func25
+    OP_SYSREQ_N       0 LastKeyWait 0
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       4
+    OP_CALL           0 func26
+    OP_PUSH_P_C       0
+    OP_CALL           0 func27
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func6 //0x550
+    OP_PROC           0
+    OP_PUSH_P_S       12
+    OP_SYSREQ_N       0 MdlAcmdInit 4
+    OP_PUSH_P_C       0
+    OP_JUMP           0 lbl29
+
+   #lbl32 //0x570
+    OP_LOAD_P_S_PRI   -4
+    OP_ADD_P_C        3
+    OP_STOR_P_S_PRI   -4
+
+   #lbl29 //0x57c
+    // Local variables are stored on the stack instead of the heap (though I don't know what the heap is actually intended for)
+    // Local variables start at (FRM) -4 and params of a function at (FRM) +12
+    //   (e.g. making this opcode load the first var and the third param into PRI and ALT)
+    OP_LOAD_S_BOTH    0 -4 20
+    OP_JSGEQ          0 lbl30
+    OP_LOAD_P_S_PRI   16
+    OP_PUSH_PRI       0
+    OP_LOAD_P_S_PRI   -4
+    OP_POP_ALT        0
+    OP_IDXADDR_P_B    2
+    OP_LOAD_I         0
+    OP_EQ_C_PRI       0 65535
+    OP_JZER           0 lbl31
+    OP_JUMP           0 lbl30
+
+   #lbl31 //0x5c0
+    OP_LOAD_P_S_PRI   16
+    OP_PUSH_PRI       0
+    OP_LOAD_P_S_PRI   -4
+    OP_ADD_P_C        2
+    OP_POP_ALT        0
+    OP_IDXADDR_P_B    2
+    OP_LOAD_I         0
+    OP_PUSH_PRI       0
+    OP_LOAD_P_S_PRI   16
+    OP_PUSH_PRI       0
+    OP_LOAD_P_S_PRI   -4
+    OP_ADD_P_C        1
+    OP_POP_ALT        0
+    OP_IDXADDR_P_B    2
+    OP_LOAD_I         0
+    OP_PUSH_PRI       0
+    OP_LOAD_P_S_PRI   16
+    OP_PUSH_PRI       0
+    OP_LOAD_P_S_PRI   -4
+    OP_POP_ALT        0
+    OP_IDXADDR_P_B    2
+    OP_LOAD_I         0
+    OP_PUSH_PRI       0
+    OP_SYSREQ_N       0 MdlAcmdSet 12
+    OP_JUMP           0 lbl32
+
+   #lbl30 //0x630
+    OP_STACK_P        4
+    OP_SYSREQ_N       0 MdlAcmdSetEnd 0
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func7 //0x648
+    OP_PROC           0
+    OP_JUMP           0 lbl33
+
+   #lbl33 //0x654
+    OP_PUSH_P_S       12
+    OP_SYSREQ_N       0 MdlAcmdUpdate 4
+    OP_JZER           0 lbl34
+    OP_JUMP           0 lbl35
+    OP_JUMP           0 lbl36
+
+   #lbl34 //0x67c
+    OP_PUSH_P_C       1
+    OP_PUSH_P_C       4
+    OP_CALL           0 func22
+
+   #lbl36 //0x68c
+    OP_JUMP           0 lbl33
+
+   #lbl35 //0x694
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func15 //0x69c
+    OP_PROC           0
+    OP_PUSH_P_S       12
+    OP_SYSREQ_N       0 MdlSetWaitAnimeReq 4
+    OP_PUSH_P_C       1
+    OP_PUSH_P_C       4
+    OP_CALL           0 func22
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #funcmain //0x6c8
+    OP_PROC           0
+    OP_LOAD_P_PRI     60
+    OP_SWITCH         0 lbl37
+
+   #lbl45 //0x6d8
+    OP_PUSH_P_C       0
+    OP_CALL           0 func38
+    OP_JUMP           0 lbl39
+
+   #lbl46 //0x6ec
+    OP_PUSH_P_C       0
+    OP_CALL           0 func40
+    OP_JUMP           0 lbl39
+
+   #lbl47 //0x700
+    OP_PUSH_P_C       0
+    OP_CALL           0 func41
+    OP_JUMP           0 lbl39
+
+   #lbl44 //0x714
+    OP_PUSH_P_C       0
+    OP_CALL           0 func42
+    OP_JUMP           0 lbl39
+
+   #lbl43 //0x728
+    OP_SYSREQ_N       0 CommandNOP 0
+    OP_JUMP           0 lbl39
+
+   #lbl37 //0x73c
+    OP_CASETBL        0 4 lbl43 -1 lbl44 1 lbl45 2 lbl46 3 lbl47
+
+   #lbl39 //0x768
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func42 //0x770
+    OP_PROC           0
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func38 //0x77c
+    OP_PROC           0
+    OP_PUSH_P_C       -1
+    OP_PUSH_P_C       1
+    OP_PUSH_P_C       0
+    OP_PUSH_P_C       12
+    OP_CALL           0 func48
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func40 //0x7a0
+    OP_PROC           0
+    OP_PUSH_P_C       -1
+    OP_PUSH_P_C       1
+    OP_PUSH_P_C       1
+    OP_PUSH_P_C       12
+    OP_CALL           0 func48
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+  #func41 //0x7c4
+    OP_PROC           0
+    OP_PUSH_P_C       -1
+    OP_PUSH_P_C       1
+    OP_PUSH_P_C       2
+    OP_PUSH_P_C       12
+    OP_CALL           0 func49
+    OP_ZERO_PRI       0
+    OP_RETN           0
+
+
+
+// Start of the data section that is a part of an AMX script
+// Data sections that are marked with "--- Data Section" are outside of the AMX script and can thereby not be accessed by the script
+// It seems to always start with the movement instructions, which are made of 12 bytes per instruction (with the structure being unknown)
+// The first ff ff ff ff variable is usually where the called script ID is written to
+Data:
+    // 0x0
+    07 00 00 00   00 00 00 00   01 00 00 00   82 00 00 00
+    09 00 00 00   01 00 00 00   83 00 00 00   09 00 00 00
+    01 00 00 00   84 00 00 00   09 00 00 00   01 00 00 00
+    01 00 00 00   09 00 00 00   01 00 00 00   ff ff ff ff
+    00 00 00 00   00 00 00 00
