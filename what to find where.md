@@ -41,11 +41,18 @@ This is purely documentation for which files contain AMX scripts and what their 
 ## SM
 - a/0/9/2
   - TODO research, probably the same as USUM's a/0/9/2
+- a/0/8/3
+  - TODO research, probably the same as USUM's a/0/8/2
 - TODO research remaining GARCs
 
 ## USUM
 - a/0/9/2
-  - All scripts in the game?
+  - Field scripts
   - 759 files
   - Seems like all scripts have global script IDs
+- a/0/8/2
+  - Zone init and Zone script for each area
+  - 3696 files
+  - Seemingly 11 files per area, with 8th and 9th files being the scripts
+    - i.e. 0007+0008, 0018+0019, 0029+0030, 0040+0041, ...
 - TODO research remaining GARCs
