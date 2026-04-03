@@ -22,6 +22,7 @@ This is purely documentation for which files contain AMX scripts and what their 
   - TODO research remaining files
 - a/0/9/0
   - unknown purpose, only first file with script?
+  - disassembly is broken due to missing jump label (as of 3.0.0)
 - a/1/0/7 
   - unknown purpose, only one file
 - btl_ai.garc
@@ -37,6 +38,7 @@ This is purely documentation for which files contain AMX scripts and what their 
   - TODO research remaining files
 - a/0/8/9
   - unknown purpose, probably the same as XY's a/0/9/0
+  - disassembly is broken due to missing jump label (as of 3.0.0)
 
 ## SM
 - a/0/9/2
