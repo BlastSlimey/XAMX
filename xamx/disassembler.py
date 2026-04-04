@@ -11,6 +11,7 @@ if TYPE_CHECKING:
 def disassemble(self: "AMX") -> str:
     header, links = _print_header(self)
     return "\n".join([
+        "// Please read the example disassembly in the examples folder if you haven't done so yet",
         *header,
         "",
         "",
